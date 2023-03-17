@@ -1,6 +1,6 @@
 // if you use expo remove this line
-import { AppRegistry } from 'react-native';
-
+import { AppRegistry, StatusBar } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import {
 	getStorybookUI,
 	configure,
@@ -22,10 +22,15 @@ configure(() => {
 // To find allowed options for getStorybookUI
 const StorybookUIRoot = getStorybookUI({
 	asyncStorage: null,
+	tabOpen: 1,
 });
 
 // If you are using React Native vanilla and after installation you don't see your app name here, write it manually.
 // If you use Expo you should remove this line.
 AppRegistry.registerComponent('%APP_NAME%', () => StorybookUIRoot);
 
-export default StorybookUIRoot;
+export default () => (
+	<SafeAreaView style={{ flex: 1, paddingTop: StatusBar.currentHeight }}>
+		<StorybookUIRoot />
+	</SafeAreaView>
+);
