@@ -16,9 +16,13 @@ storiesOf('Box', module)
 			),
 		},
 	})
-	.add('with text test', () => (
-		<Box>
-			{/* <Title color='white'>Box</Title>
-			<Text color='gray'>Box</Text> */}
-		</Box>
-	));
+	.add('with text test', () => {
+		return (
+			<Box>
+				<Title numberOfLines={1} ellipsizeMode='tail' color='white'>
+					12345678910111213141516
+				</Title>
+				<Text color='gray'>12345678910111213141516171819202122</Text>
+			</Box>
+		);
+	});

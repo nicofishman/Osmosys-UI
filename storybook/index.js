@@ -7,6 +7,7 @@ import {
 	addDecorator,
 } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
+import { loadFonts } from '../src/fonts';
 
 import './rn-addons';
 
@@ -15,6 +16,7 @@ addDecorator(withKnobs);
 
 // import stories
 configure(() => {
+	loadFonts();
 	require('./stories');
 }, module);
 
@@ -22,7 +24,6 @@ configure(() => {
 // To find allowed options for getStorybookUI
 const StorybookUIRoot = getStorybookUI({
 	asyncStorage: null,
-	tabOpen: 1,
 });
 
 // If you are using React Native vanilla and after installation you don't see your app name here, write it manually.

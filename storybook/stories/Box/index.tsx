@@ -4,17 +4,26 @@ import { select } from '@storybook/addon-knobs';
 
 interface Props {
 	children: React.ReactNode;
+	testId?: string;
+	backgroundColor?: keyof typeof COLORS | null;
 }
 
-export default function Box({ children }: Props) {
-	const background = select<keyof typeof COLORS>(
-		'BackgroundColor',
-		COLORS,
-		'primary_orange'
-	);
+export default function Box({
+	children,
+	testId,
+	backgroundColor = null,
+}: Props) {
+	const background = backgroundColor
+		? COLORS[backgroundColor]
+		: select<keyof typeof COLORS>(
+				'BackgroundColor',
+				COLORS,
+				'primary_orange'
+		  );
 
 	return (
 		<View
+			testID={testId}
 			style={[
 				styles.container,
 				{
@@ -32,7 +41,7 @@ const styles = StyleSheet.create({
 		minHeight: 60,
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
-		paddingHorizontal: 16,
+		paddingLeft: 16,
 		paddingVertical: 14,
 		shadowColor: '#000000',
 		elevation: 10,
