@@ -1,21 +1,31 @@
-import { StyleSheet } from 'react-native';
+// import { StyleSheet } from 'react-native';
 
-export { default } from './storybook';
+import { useState, useEffect } from 'react';
 
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Open up App.tsx to start working on your app!</Text>
-//       <StatusBar style="auto" />
-//     </View>
-//   );
-// }
+import { StorybookComp } from './storybook';
+import { loadFonts } from './src/fonts';
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-});
+export default function App() {
+    const [isLoadingComplete, setLoadingComplete] = useState(false);
+
+    useEffect(() => {
+        (async () => {
+            await loadFonts(setLoadingComplete);
+        })();
+    }, []);
+
+    if (!isLoadingComplete) {
+        return null;
+    }
+
+    return <StorybookComp />;
+}
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         backgroundColor: '#fff',
+//         alignItems: 'center',
+//         justifyContent: 'center'
+//     }
+// });
