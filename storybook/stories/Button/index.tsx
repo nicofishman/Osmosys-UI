@@ -6,15 +6,24 @@ import { LightenDarkenColor } from '../../../src/utils/color';
 import { COLORS } from '../../../src/constants';
 
 interface ButtonProps extends React.ComponentProps<typeof TouchableHighlight> {
+    /**
+     * The text of the button. This should be a string.
+     */
     children: React.ReactNode;
+    /**
+     * The background color of the button. This should be a key of the `COLORS` object.
+     */
     backgroundColor?: keyof typeof COLORS | null;
+    /**
+     * The function to call when the button is pressed.
+     */
     onPress?: () => void;
 }
 
 export default function Button({
     onPress = () => {},
     backgroundColor = null,
-    children = null,
+    children = '',
     style,
     ...props
 }: ButtonProps) {
@@ -26,7 +35,7 @@ export default function Button({
               'primary_orange'
           );
 
-    const underlayBackgroundColor = LightenDarkenColor(background, 10);
+    const underlayBackgroundColor = LightenDarkenColor(background, 20);
 
     return (
         <TouchableHighlight

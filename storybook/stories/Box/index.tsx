@@ -3,9 +3,18 @@ import { View, StyleSheet } from 'react-native';
 
 import { COLORS } from '../../../src/constants';
 
-interface Props {
+interface BoxProps {
+    /**
+     * The content of the component.
+     */
     children: React.ReactNode;
+    /**
+     * The test ID of the component.
+     */
     testId?: string;
+    /**
+     * The background color of the component. This should be a key of the `COLORS` object.
+     */
     backgroundColor?: keyof typeof COLORS | null;
 }
 
@@ -13,7 +22,7 @@ export default function Box({
     children,
     testId,
     backgroundColor = null
-}: Props) {
+}: BoxProps) {
     const background = backgroundColor
         ? COLORS[backgroundColor]
         : select<keyof typeof COLORS>(

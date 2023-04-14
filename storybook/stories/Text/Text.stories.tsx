@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react-native';
 import { TEXT_COLORS } from '../../../src/constants';
 import CenterView from '../CenterView';
 
-import { Title, Text } from '.';
+import { Text, Title } from '.';
 
 storiesOf('Text', module)
     .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
@@ -17,5 +17,5 @@ storiesOf('Text', module)
             )
         }
     })
-    .add('Title text', () => <Title color='white'>Title</Title>)
+    .add('Title text', () => <Title color='white'>Text</Title>)
     .add('Text text', () => <Text color='white'>Text</Text>);

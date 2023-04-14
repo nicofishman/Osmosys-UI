@@ -1,9 +1,12 @@
 import * as Font from 'expo-font';
-import { Dispatch, SetStateAction } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 
+/**
+ * Loads the fonts for the app
+ * @param setFontsLoaded - A function that sets the fontsLoaded's react state to true
+ */
 export const loadFonts = async (
-    setFontsLoaded: Dispatch<SetStateAction<boolean>>
+    setFontsLoaded: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     try {
         SplashScreen.preventAutoHideAsync();

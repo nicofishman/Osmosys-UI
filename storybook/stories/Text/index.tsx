@@ -1,11 +1,15 @@
 import React from 'react';
-import { Text as ReactNativeText, StyleSheet, TextStyle } from 'react-native';
+import { Text as RNText, StyleSheet, TextStyle } from 'react-native';
 import { select } from '@storybook/addon-knobs';
 
 import { TEXT_COLORS } from '../../../src/constants';
 
-interface Props extends React.ComponentProps<typeof ReactNativeText> {
-    children: React.ReactNode;
+interface Props extends React.ComponentProps<typeof RNText> {
+    // `Children` refers to the content of the component. This should be a string.
+    children: string;
+    /**
+     * The color of the text. This should be a key of the `TEXT_COLORS` object.
+     */
     color?: keyof typeof TEXT_COLORS;
 }
 
@@ -17,7 +21,7 @@ export function Text({ children, color = 'white', ...props }: Props) {
     );
 
     return (
-        <ReactNativeText
+        <RNText
             {...props}
             style={[
                 props.style,
@@ -30,7 +34,7 @@ export function Text({ children, color = 'white', ...props }: Props) {
             ]}
         >
             {children}
-        </ReactNativeText>
+        </RNText>
     );
 }
 
@@ -42,7 +46,7 @@ export function Title({ children, color = 'white', ...props }: Props) {
     );
 
     return (
-        <ReactNativeText
+        <RNText
             adjustsFontSizeToFit
             numberOfLines={1}
             {...props}
@@ -57,11 +61,9 @@ export function Title({ children, color = 'white', ...props }: Props) {
             ]}
         >
             {children}
-        </ReactNativeText>
+        </RNText>
     );
 }
-
-// specify StyleSheet.create with generics to TextStyles
 
 const textStyles = StyleSheet.create<{
     [key: string]: TextStyle;
@@ -71,3 +73,19 @@ const textStyles = StyleSheet.create<{
         overflow: 'hidden'
     }
 });
+
+// https://stackoverflow.com/a/59733914/21383202
+// <Box1Item>
+//     <Text color="white">key1</Text>
+//     <Text color="white">value1</Text>
+//     <Text color="white">key1</Text>
+//     <Text color="white">value2</Text>
+// </Box1Item>
+
+// type IProps = {
+//     includeIcon: false;
+//     icon: never;
+// } | {
+//     includeIcon: true;
+//     icon: React.ReactNode;
+// }
