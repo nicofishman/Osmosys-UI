@@ -15,7 +15,7 @@ import {
     Zocial
 } from '@expo/vector-icons';
 
-import { CardIconProps } from './../src/components/CardIcon';
+import { IIcon } from './../src/components/CardIcon';
 
 const NameToImport = {
     AntDesign,
@@ -61,8 +61,8 @@ export type GlyphMap<G extends Library> = Exclude<
 export type Library = keyof typeof NameToImport;
 
 export type CardIconElement<L extends Library> = React.ReactElement<
-    CardIconProps<L>,
-    React.JSXElementConstructor<CardIconProps<L>>
+    IIcon<L>,
+    React.JSXElementConstructor<IIcon<L>>
 > & {
-    type: React.JSXElementConstructor<CardIconProps<L>>;
+    type: React.JSXElementConstructor<IIcon<L>>;
 };

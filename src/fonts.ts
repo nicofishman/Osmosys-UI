@@ -11,7 +11,15 @@ export const loadFonts = async (
     try {
         SplashScreen.preventAutoHideAsync();
         await Font.loadAsync({
+            Nunito_400Regular: require('@expo-google-fonts/nunito/Nunito_400Regular.ttf'),
+            Nunito_500Medium: require('@expo-google-fonts/nunito/Nunito_500Medium.ttf'),
+            Nunito_600SemiBold: require('@expo-google-fonts/nunito/Nunito_600SemiBold.ttf'),
             Nunito_700Bold: require('@expo-google-fonts/nunito/Nunito_700Bold.ttf'),
+            Nunito_800ExtraBold: require('@expo-google-fonts/nunito/Nunito_800ExtraBold.ttf'),
+            Montserrat_400Regular: require('@expo-google-fonts/montserrat/Montserrat_400Regular.ttf'),
+            Montserrat_500Medium: require('@expo-google-fonts/montserrat/Montserrat_500Medium.ttf'),
+            Montserrat_600SemiBold: require('@expo-google-fonts/montserrat/Montserrat_600SemiBold.ttf'),
+            Montserrat_700Bold: require('@expo-google-fonts/montserrat/Montserrat_700Bold.ttf'),
             Montserrat_800ExtraBold: require('@expo-google-fonts/montserrat/Montserrat_800ExtraBold.ttf')
         });
     } catch (err) {

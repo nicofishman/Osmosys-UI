@@ -19,24 +19,25 @@ import { IconProps } from '@expo/vector-icons/build/createIconSet';
 
 import { GlyphMap, Library } from '../../types/Icon';
 import { TEXT_COLORS } from '../constants';
+import { TextColor } from '../../types/Colors';
 
-export interface CardIconProps<L extends Library> extends IconProps<L> {
+export interface IIcon<L extends Library> extends IconProps<L> {
     library: L;
     name: GlyphMap<L>;
-    color?: keyof typeof TEXT_COLORS;
+    color?: TextColor;
 }
 
 const Icon = <L extends Library>({
     library,
     name,
-    color,
+    color = 'white',
     ...rest
-}: CardIconProps<L>) => {
+}: IIcon<L>) => {
     switch (library) {
         case 'AntDesign':
             return (
                 <AntDesign
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'AntDesign'>}
                     {...rest}
                 />
@@ -44,7 +45,7 @@ const Icon = <L extends Library>({
         case 'Entypo':
             return (
                 <Entypo
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'Entypo'>}
                     {...rest}
                 />
@@ -52,7 +53,7 @@ const Icon = <L extends Library>({
         case 'EvilIcons':
             return (
                 <EvilIcons
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'EvilIcons'>}
                     {...rest}
                 />
@@ -60,7 +61,7 @@ const Icon = <L extends Library>({
         case 'Feather':
             return (
                 <Feather
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'Feather'>}
                     {...rest}
                 />
@@ -68,7 +69,7 @@ const Icon = <L extends Library>({
         case 'FontAwesome':
             return (
                 <FontAwesome
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'FontAwesome'>}
                     {...rest}
                 />
@@ -76,7 +77,7 @@ const Icon = <L extends Library>({
         case 'FontAwesome5':
             return (
                 <FontAwesome5
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'FontAwesome5'>}
                     {...rest}
                 />
@@ -84,7 +85,7 @@ const Icon = <L extends Library>({
         case 'Fontisto':
             return (
                 <Fontisto
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'Fontisto'>}
                     {...rest}
                 />
@@ -92,7 +93,7 @@ const Icon = <L extends Library>({
         case 'Foundation':
             return (
                 <Foundation
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'Foundation'>}
                     {...rest}
                 />
@@ -100,7 +101,7 @@ const Icon = <L extends Library>({
         case 'Ionicons':
             return (
                 <Ionicons
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'Ionicons'>}
                     {...rest}
                 />
@@ -108,7 +109,7 @@ const Icon = <L extends Library>({
         case 'MaterialCommunityIcons':
             return (
                 <MaterialCommunityIcons
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'MaterialCommunityIcons'>}
                     {...rest}
                 />
@@ -116,7 +117,7 @@ const Icon = <L extends Library>({
         case 'MaterialIcons':
             return (
                 <MaterialIcons
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'MaterialIcons'>}
                     {...rest}
                 />
@@ -124,7 +125,7 @@ const Icon = <L extends Library>({
         case 'Octicons':
             return (
                 <Octicons
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'Octicons'>}
                     {...rest}
                 />
@@ -132,7 +133,7 @@ const Icon = <L extends Library>({
         case 'SimpleLineIcons':
             return (
                 <SimpleLineIcons
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'SimpleLineIcons'>}
                     {...rest}
                 />
@@ -140,7 +141,7 @@ const Icon = <L extends Library>({
         case 'Zocial':
             return (
                 <Zocial
-                    color={TEXT_COLORS[color ?? 'white']}
+                    color={TEXT_COLORS[color]}
                     name={name as GlyphMap<'Zocial'>}
                     {...rest}
                 />

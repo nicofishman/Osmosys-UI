@@ -6,7 +6,7 @@ import { CardElement } from '../../types/Card';
 
 import Card from './Card';
 
-interface CardSwiperProps extends FlipCardProps {
+interface ICardSwiper extends FlipCardProps {
     children: [CardElement, CardElement];
     /**
      * Show dots to indicate which side is being shown
@@ -20,7 +20,7 @@ const CardSwiper = ({
     style,
     showDots = true,
     ...props
-}: CardSwiperProps) => {
+}: ICardSwiper) => {
     const [isFlipped, setIsFlipped] = useState(false);
 
     // check that both children are cards
@@ -32,9 +32,6 @@ const CardSwiper = ({
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ![Card.SingleData, Card.MultipleData].includes(children[1].type as any)
     ) {
-        console.log(children[0].type === Card.SingleData);
-        console.log(children[1].type === Card.MultipleData);
-
         throw new Error('CardSwiper: Both children should be Card components');
     }
 

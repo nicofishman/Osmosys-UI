@@ -1,8 +1,8 @@
 import { TextProps } from 'react-native/types';
 
-import { TEXT_COLORS } from '../constants';
-import { CardTextItem, CardTextWithProps } from '../../types/TextType';
+import { TextColor } from '../../types/Colors';
 import { CardIconElement, Library } from '../../types/Icon';
+import { CardTextItem, CardTextWithProps } from '../../types/TextType';
 
 /**
  * This function is used to get the color from the style object and return it separated from the rest of the style object.
@@ -13,7 +13,7 @@ export function colorAndRest(textWithStyle: CardTextItem) {
     const defaultStyle = {
         color: 'white'
     } as {
-        color?: keyof typeof TEXT_COLORS;
+        color?: TextColor;
     } & TextProps;
 
     if (typeof textWithStyle === 'string') {

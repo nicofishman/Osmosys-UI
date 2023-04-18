@@ -3,11 +3,21 @@ import { View, Text, Pressable } from 'react-native';
 import { ViewProps } from 'react-native';
 
 import { COLORS } from '../constants';
+import { Color } from '../../types/Colors';
 
-interface RecentSearchCardProps extends ViewProps {
+interface IRecentSearchCard extends ViewProps {
+    /**
+     * The code of the product
+     */
     code: string;
+    /**
+     * The name of the product
+     */
     name: string;
-    color?: keyof typeof COLORS;
+    /**
+     * The color of the card. Must be a valid Osmosys Color
+     */
+    color?: Color;
 }
 
 const RecentSearchCard = ({
@@ -16,7 +26,7 @@ const RecentSearchCard = ({
     name,
     style,
     ...rest
-}: RecentSearchCardProps) => {
+}: IRecentSearchCard) => {
     const [numberOfLines, setNumberOfLines] = React.useState(1);
 
     return (

@@ -1,11 +1,11 @@
-import { MultipleDataProps, SingleDataProps } from '../src/components/Card';
+import { IMultipleData, ISingleData } from '../src/components/Card';
 
-export type CardSingleDataElement = React.ReactElement<SingleDataProps> & {
-    type: React.JSXElementConstructor<SingleDataProps>;
+export type CardSingleDataElement = React.ReactElement<ISingleData> & {
+    type: React.JSXElementConstructor<ISingleData>;
 };
 
-export type CardMultipleDataElement = React.ReactElement<MultipleDataProps> & {
-    type: React.JSXElementConstructor<MultipleDataProps>;
+export type CardMultipleDataElement = React.ReactElement<IMultipleData> & {
+    type: React.JSXElementConstructor<IMultipleData>;
 };
 
 export type CardElement = CardSingleDataElement | CardMultipleDataElement;

@@ -1,7 +1,6 @@
 import type { TextProps } from 'react-native';
 
-import { TEXT_COLORS } from '../src/constants';
-
+import { TextColor } from './Colors';
 import { CardIconElement, Library } from './Icon';
 
 /**
@@ -14,7 +13,7 @@ export type CardTextItem =
 export type CardTextWithProps = {
     text: string;
     style?: {
-        color?: keyof typeof TEXT_COLORS;
+        color?: TextColor;
     };
 } & (
     | {

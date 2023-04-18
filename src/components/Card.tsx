@@ -3,21 +3,22 @@ import { StyleSheet, Text, View, type ViewProps } from 'react-native';
 import { TitleDescriptionPair } from '../../types/TextType';
 import { COLORS } from '../constants';
 import { formatTextItem } from '../utils/cardTextUtils';
+import { Color } from '../../types/Colors';
 
 import CardText from './CardText';
 
-export interface CardProps extends ViewProps {
+export interface ICard extends ViewProps {
     /**
      * The background color of the component. This should be a key of the `COLORS` object.
      */
-    backgroundColor?: keyof typeof COLORS;
+    backgroundColor?: Color;
 }
 
-export interface MultipleDataProps extends CardProps {
+export interface IMultipleData extends ICard {
     data: Array<TitleDescriptionPair>;
 }
 
-export interface SingleDataProps extends CardProps {
+export interface ISingleData extends ICard {
     data: TitleDescriptionPair;
 }
 
@@ -29,7 +30,7 @@ export default function Card({
     backgroundColor = 'background',
     style,
     ...props
-}: CardProps) {
+}: ICard) {
     const background = COLORS[backgroundColor];
 
     return (
@@ -48,7 +49,7 @@ export default function Card({
     );
 }
 
-const MultipleData = ({ data, ...props }: MultipleDataProps) => {
+const MultipleData = ({ data, ...props }: IMultipleData) => {
     const { style, ...rest } = props;
 
     return (
@@ -126,7 +127,7 @@ const MultipleData = ({ data, ...props }: MultipleDataProps) => {
 
 Card.MultipleData = MultipleData;
 
-const SingleData = ({ data, style, ...props }: SingleDataProps) => {
+const SingleData = ({ data, style, ...props }: ISingleData) => {
     const { text: titleText, ...titleFormatted } = formatTextItem(data.title);
 
     const { text: descriptionText, ...descriptionFormatted } = formatTextItem(
@@ -158,15 +159,17 @@ const SingleData = ({ data, style, ...props }: SingleDataProps) => {
                     numberOfLines={1}
                     text={{
                         text: `${titleText}`,
-                        style: {
-                            fontSize: 16,
-                            minWidth: 0,
-                            fontVariant: ['oldstyle-nums'],
-                            color:
-                                typeof data.title === 'string'
-                                    ? 'white'
-                                    : titleFormatted.color ?? 'white'
-                        },
+                        style: [
+                            {
+                                fontSize: 16,
+                                minWidth: 0,
+                                fontVariant: ['oldstyle-nums'],
+                                color:
+                                    typeof data.title === 'string'
+                                        ? 'white'
+                                        : titleFormatted.color ?? 'white'
+                            }
+                        ],
                         ...titleFormatted
                     }}
                 />

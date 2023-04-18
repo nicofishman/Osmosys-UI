@@ -1,27 +1,26 @@
 import React from 'react';
-import { Text as RNText, type TextProps } from 'react-native';
+import { Text as RNText, TextStyle, type TextProps } from 'react-native';
 
 import { CardTextItem } from '../../types/TextType';
 import { TEXT_COLORS } from '../constants';
 import { colorAndRest, getText } from '../utils/cardTextUtils';
+import { TextColor } from '../../types/Colors';
 
 import Icon from './CardIcon';
 
-interface CardTextProps extends TextProps {
+interface ICardText extends TextProps {
     text: CardTextItem;
 }
 
-const CardText = ({ text: textObj, style, ...props }: CardTextProps) => {
+const CardText = ({ text: textObj, style, ...props }: ICardText) => {
     const text = getText(textObj);
     const { color: textColor, ...rest } = colorAndRest(textObj);
     const restItem = rest as {
         iconPosition?: 'left' | 'right';
         includeIcon?: true;
         icon?: React.ReactNode;
-        style?: {
-            color?: keyof typeof TEXT_COLORS;
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            [key: string]: any;
+        style?: TextStyle & {
+            color?: (typeof TEXT_COLORS)[TextColor];
         };
     };
 
@@ -52,8 +51,9 @@ const CardText = ({ text: textObj, style, ...props }: CardTextProps) => {
                     minWidth: '50%',
                     maxWidth: '50%',
                     alignItems: 'center',
+                    textAlign: 'left',
                     textAlignVertical: 'center',
-                    fontFamily: 'Nunito_700Bold',
+                    paddingLeft: icon ? 5 : 0,
                     ...restItem.style
                 },
                 style,
@@ -64,7 +64,14 @@ const CardText = ({ text: textObj, style, ...props }: CardTextProps) => {
             {...props}
         >
             {iconPosition === 'left' && icon}
-            <RNText>{`${iconPosition === 'left' ? ' ' : ''}${text}${
+            <RNText
+                style={[
+                    {
+                        fontFamily:
+                            restItem.style?.fontFamily ?? 'Nunito_700Bold'
+                    }
+                ]}
+            >{`${iconPosition === 'left' ? ' ' : ''}${text}${
                 iconPosition === 'right' ? ' ' : ''
             }`}</RNText>
             {iconPosition === 'right' && icon}
