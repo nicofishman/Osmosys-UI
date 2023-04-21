@@ -25,12 +25,12 @@ const CardSwiper = ({
 
     // check that both children are cards
     if (
-        ![Card.SingleData, Card.MultipleData].includes(
+        ![Card].includes(
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             children[0].type as any
         ) ||
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ![Card.SingleData, Card.MultipleData].includes(children[1].type as any)
+        ![Card].includes(children[1].type as any)
     ) {
         throw new Error('CardSwiper: Both children should be Card components');
     }

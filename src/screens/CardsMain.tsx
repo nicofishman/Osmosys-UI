@@ -110,9 +110,9 @@ function CardsMain() {
                     }}
                 />
             </CardSwiper> */}
-            <Divider color='primary_orange' size='sm' />
-            <Card.MultipleData
-                backgroundColor='primary_orange'
+            <Divider color='primary_orange' size='lg' />
+            <Card
+                backgroundColor='secondary_cyan'
                 data={[
                     {
                         title: {
@@ -154,6 +154,27 @@ function CardsMain() {
                     { title: 'ELABORADOR', description: 'USP' },
                     { title: 'PROVEEDOR', description: 'CWO' }
                 ]}
+            />
+            <Card
+                backgroundColor='primary_blue'
+                data={{
+                    title: {
+                        text: 'GRUPO',
+                        style: {
+                            fontFamily: 'Nunito_500Medium'
+                        },
+                        includeIcon: true,
+                        iconPosition: 'right',
+                        icon: <Icon library='FontAwesome' name='group' />
+                    },
+                    description: {
+                        text: '8-CORR Corrosivos sólidos',
+                        style: {
+                            color: 'white',
+                            fontFamily: 'Nunito_800ExtraBold'
+                        }
+                    }
+                }}
             />
             {/*
             <RecentSearchCard

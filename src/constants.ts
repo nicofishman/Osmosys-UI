@@ -9,8 +9,14 @@ export const COLORS = {
 
 export const TEXT_COLORS = {
     gray: '#4d4d4d',
-    positivo: '#1AB800',
-    negativo: '#BE0000',
+    green: '#1AB800',
+    red: '#BE0000',
     black: '#000000',
     white: '#F8F9FE'
+} as const;
+
+
+export const ALL_COLORS = {
+    ...COLORS,
+    ...TEXT_COLORS
 } as const;

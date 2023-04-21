@@ -1,9 +1,10 @@
-import React from 'react';
-import { View, Text, Pressable } from 'react-native';
-import { ViewProps } from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, Text, View, ViewProps } from 'react-native';
 
-import { COLORS } from '../constants';
 import { Color } from '../../types/Colors';
+import { COLORS } from '../constants';
+
+import Icon from './CardIcon';
 
 interface IRecentSearchCard extends ViewProps {
     /**
@@ -14,6 +15,12 @@ interface IRecentSearchCard extends ViewProps {
      * The name of the product
      */
     name: string;
+
+    /**
+     * Function to be called when the chevron is pressed
+     */
+    onPress?: () => void;
+
     /**
      * The color of the card. Must be a valid Osmosys Color
      */
@@ -24,10 +31,11 @@ const RecentSearchCard = ({
     color = 'primary_blue',
     code,
     name,
+    onPress,
     style,
     ...rest
 }: IRecentSearchCard) => {
-    const [numberOfLines, setNumberOfLines] = React.useState(1);
+    const [numberOfLines, setNumberOfLines] = useState(1);
 
     return (
         <Pressable
@@ -71,22 +79,41 @@ const RecentSearchCard = ({
             <View
                 style={{
                     paddingLeft: 10,
-                    paddingRight: 16,
-                    paddingVertical: 14,
-                    height: numberOfLines === 2 ? 140 : 100
+                    height: numberOfLines === 2 && name.length > 20 ? 110 : 70,
+                    flexDirection: 'row'
                 }}
             >
                 <Text
                     lineBreakMode='tail'
                     numberOfLines={numberOfLines}
                     style={{
+                        flex: 1,
                         color: COLORS[color],
                         fontFamily: 'Montserrat_800ExtraBold',
-                        fontSize: 32
+                        fontSize: 32,
+                        paddingRight: 14,
+                        paddingVertical: 14
                     }}
                 >
                     {name}
                 </Text>
+                <Pressable
+                    style={{
+                        height:
+                            numberOfLines === 2 && name.length > 20 ? 110 : 70,
+                        alignItems: 'center',
+                        width: 35,
+                        justifyContent: 'center'
+                    }}
+                    onPress={onPress}
+                >
+                    <Icon
+                        color={color}
+                        library='Entypo'
+                        name='chevron-right'
+                        size={24}
+                    />
+                </Pressable>
             </View>
         </Pressable>
     );

@@ -34,7 +34,7 @@ const ButtonsMain = () => {
                 <Button
                     backgroundColor='background'
                     textStyle={{
-                        color: 'positivo'
+                        color: 'green'
                     }}
                     onPress={fakeFetch}
                 >

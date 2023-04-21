@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, type ViewProps } from 'react-native';
+import { StyleSheet, View, type ViewProps } from 'react-native';
 
+import { Color } from '../../types/Colors';
 import { TitleDescriptionPair } from '../../types/TextType';
 import { COLORS } from '../constants';
 import { formatTextItem } from '../utils/cardTextUtils';
-import { Color } from '../../types/Colors';
 
 import CardText from './CardText';
 
@@ -12,30 +12,39 @@ export interface ICard extends ViewProps {
      * The background color of the component. This should be a key of the `COLORS` object.
      */
     backgroundColor?: Color;
-}
-
-export interface IMultipleData extends ICard {
-    data: Array<TitleDescriptionPair>;
-}
-
-export interface ISingleData extends ICard {
-    data: TitleDescriptionPair;
+    /**
+     * The data to be displayed in the card. This can be either a single object or an array of objects.
+     */
+    data: TitleDescriptionPair | Array<TitleDescriptionPair>;
 }
 
 /**
  *  General box that displays information. This is just an internal implementation and should not be used in apps.
  */
 export default function Card({
-    children,
+    data,
     backgroundColor = 'background',
     style,
     ...props
 }: ICard) {
     const background = COLORS[backgroundColor];
 
+    if (!Array.isArray(data)) {
+        data = [data];
+    }
+
     return (
         <View
             style={[
+                {
+                    height: 'auto',
+                    paddingHorizontal: 6,
+                    paddingVertical: 6,
+                    minHeight: 34,
+                    borderRadius: 5,
+                    width: 'auto',
+                    gap: 15
+                },
                 styles.container,
                 style,
                 {
@@ -43,27 +52,6 @@ export default function Card({
                 }
             ]}
             {...props}
-        >
-            {children}
-        </View>
-    );
-}
-
-const MultipleData = ({ data, ...props }: IMultipleData) => {
-    const { style, ...rest } = props;
-
-    return (
-        <Card
-            backgroundColor={props.backgroundColor}
-            style={[
-                {
-                    flexDirection: 'column',
-                    height: 'auto',
-                    gap: 15
-                },
-                style
-            ]}
-            {...rest}
         >
             {data.map((item, index) => {
                 const { text: titleText, ...titleFormatted } = formatTextItem(
@@ -121,80 +109,9 @@ const MultipleData = ({ data, ...props }: IMultipleData) => {
                     </View>
                 );
             })}
-        </Card>
+        </View>
     );
-};
-
-Card.MultipleData = MultipleData;
-
-const SingleData = ({ data, style, ...props }: ISingleData) => {
-    const { text: titleText, ...titleFormatted } = formatTextItem(data.title);
-
-    const { text: descriptionText, ...descriptionFormatted } = formatTextItem(
-        data.description
-    );
-
-    return (
-        <Card
-            backgroundColor={props.backgroundColor}
-            {...props}
-            style={[
-                {
-                    height: 'auto',
-                    paddingHorizontal: 6,
-                    paddingVertical: 6,
-                    minHeight: 34,
-                    borderRadius: 5,
-                    width: 'auto'
-                },
-                style
-            ]}
-        >
-            <Text
-                style={{
-                    width: '100%'
-                }}
-            >
-                <CardText
-                    numberOfLines={1}
-                    text={{
-                        text: `${titleText}`,
-                        style: [
-                            {
-                                fontSize: 16,
-                                minWidth: 0,
-                                fontVariant: ['oldstyle-nums'],
-                                color:
-                                    typeof data.title === 'string'
-                                        ? 'white'
-                                        : titleFormatted.color ?? 'white'
-                            }
-                        ],
-                        ...titleFormatted
-                    }}
-                />
-                {descriptionText.length > 0 && (
-                    <CardText
-                        text={{
-                            text: `${descriptionText}`,
-                            style: {
-                                fontSize: 16,
-                                minWidth: 0,
-                                color:
-                                    typeof data.description === 'string'
-                                        ? 'white'
-                                        : descriptionFormatted.color ?? 'white'
-                            },
-                            ...descriptionFormatted
-                        }}
-                    />
-                )}
-            </Text>
-        </Card>
-    );
-};
-
-Card.SingleData = SingleData;
+}
 
 const styles = StyleSheet.create({
     container: {
