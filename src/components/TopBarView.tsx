@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    Keyboard,
     TouchableWithoutFeedback,
     ViewProps,
     View,
