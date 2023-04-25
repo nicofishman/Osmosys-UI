@@ -1,1 +1,0 @@
--   Replace SingleDataCard and MultipleDataCard with just Card. It accepts an array of TitleDescriptionPair or just TitleDescriptionPair

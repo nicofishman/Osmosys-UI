@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native';
 
 import InputMain from './InputMain';
 
@@ -28,15 +28,3 @@ const Main = () => {
 };
 
 export default Main;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        width: '95%',
-        backgroundColor: '#ffF',
-        // alignItems: 'center',
-        justifyContent: 'center',
-        marginLeft: '2.5%',
-        gap: 15
-    }
-});
