@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { loadFonts } from './src/fonts';
+import { loadFonts } from './src/utils/fonts';
 import Main from './src/screens/Main';
 
 export default function App() {

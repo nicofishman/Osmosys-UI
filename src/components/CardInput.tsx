@@ -11,7 +11,7 @@ import { TouchableOpacity } from 'react-native';
 
 import { Color, TextColor } from '../../types/Colors';
 import { CardIconElement, Library } from '../../types/Icon';
-import { COLORS, TEXT_COLORS } from '../constants';
+import { COLORS, TEXT_COLORS } from '../utils/constants';
 
 interface IInputCard extends TextInputProps {
     onChangeText: (text: string) => void;
@@ -20,16 +20,16 @@ interface IInputCard extends TextInputProps {
     cardStyle?: ViewStyle & {
         backgroundColor?: Color;
     };
-    endDecorator?: CardIconElement<Library>;
+    endIcon?: CardIconElement<Library>;
     placeholderTextColor?: TextColor;
     placeholderStyle?: TextStyle;
 }
 
-const InputCard = ({
+export const InputCard = ({
     placeholderTextColor = 'gray',
     value,
     onSend,
-    endDecorator,
+    endIcon,
     style,
     onChangeText,
     cardStyle,
@@ -90,18 +90,16 @@ const InputCard = ({
                 onChangeText={handleChangeText}
                 {...props}
             />
-            {endDecorator && (
+            {endIcon && (
                 <TouchableOpacity
                     style={{
                         marginLeft: 10
                     }}
                     onPress={onSend}
                 >
-                    {endDecorator}
+                    {endIcon}
                 </TouchableOpacity>
             )}
         </View>
     );
 };
-
-export default InputCard;

@@ -4,7 +4,7 @@ import FlipCard, { FlipCardProps } from 'react-native-flip-card';
 
 import { CardElement } from '../../types/Card';
 
-import Card from './Card';
+import { Card } from './Card';
 
 interface ICardSwiper extends FlipCardProps {
     children: [CardElement, CardElement];
@@ -15,7 +15,7 @@ interface ICardSwiper extends FlipCardProps {
     showDots?: boolean;
 }
 
-const CardSwiper = ({
+export const CardSwiper = ({
     children,
     style,
     showDots = true,
@@ -23,7 +23,6 @@ const CardSwiper = ({
 }: ICardSwiper) => {
     const [isFlipped, setIsFlipped] = useState(false);
 
-    // check that both children are cards
     if (
         ![Card].includes(
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -100,5 +99,3 @@ const CardSwiper = ({
         </Pressable>
     );
 };
-
-export default CardSwiper;

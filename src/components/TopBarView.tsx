@@ -1,17 +1,16 @@
 import React from 'react';
 import {
-    TouchableWithoutFeedback,
-    ViewProps,
-    View,
     StatusBar,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    View,
+    ViewProps
 } from 'react-native';
 
 import { Color } from '../../types/Colors';
-import { COLORS } from '../constants';
+import { COLORS } from '../utils/constants';
 
-import Icon from './CardIcon';
+import { Icon } from './CardIcon';
 
 interface ITopBarView extends ViewProps {
     code: string;
@@ -19,7 +18,7 @@ interface ITopBarView extends ViewProps {
     arrowPress?: () => void;
 }
 
-function TopBarView({
+export function TopBarView({
     code,
     children,
     color = 'primary_blue',
@@ -36,64 +35,59 @@ function TopBarView({
     ];
 
     return (
-        <TouchableWithoutFeedback>
-            <>
-                <StatusBar
-                    backgroundColor={COLORS[color]}
-                    barStyle={
-                        colorsToLight.includes(color)
-                            ? 'light-content'
-                            : 'dark-content'
-                    }
-                />
-                <View
+        <>
+            <StatusBar
+                backgroundColor={COLORS[color]}
+                barStyle={
+                    colorsToLight.includes(color)
+                        ? 'light-content'
+                        : 'dark-content'
+                }
+            />
+            <View
+                style={{
+                    height: (StatusBar.currentHeight ?? 30) * 2.5,
+                    backgroundColor: COLORS[color],
+                    flexDirection: 'row',
+                    paddingTop: StatusBar.currentHeight ?? 30,
+                    alignItems: 'center',
+                    paddingRight: 15,
+                    paddingLeft: 10,
+                    width: '100%',
+                    justifyContent: 'space-between'
+                }}
+            >
+                <TouchableOpacity onPress={arrowPress}>
+                    <Icon
+                        color={color === 'background' ? 'black' : 'white'}
+                        library='AntDesign'
+                        name='arrowleft'
+                        size={25}
+                    />
+                </TouchableOpacity>
+                <Text
+                    ellipsizeMode='tail'
+                    numberOfLines={1}
                     style={{
-                        height: (StatusBar.currentHeight ?? 30) * 2.5,
-                        backgroundColor: COLORS[color],
-                        flexDirection: 'row',
-                        paddingTop: StatusBar.currentHeight ?? 30,
-                        alignItems: 'center',
-                        paddingRight: 15,
-                        paddingLeft: 10,
-                        width: '100%',
-                        justifyContent: 'space-between'
+                        fontFamily: 'Montserrat_800ExtraBold',
+                        fontSize: 30,
+                        color: color === 'background' ? 'black' : 'white'
                     }}
                 >
-                    <TouchableOpacity onPress={arrowPress}>
-                        <Icon
-                            color={color === 'background' ? 'black' : 'white'}
-                            library='AntDesign'
-                            name='arrowleft'
-                            size={25}
-                        />
-                    </TouchableOpacity>
-                    <Text
-                        ellipsizeMode='tail'
-                        numberOfLines={1}
-                        style={{
-                            fontFamily: 'Montserrat_800ExtraBold',
-                            fontSize: 30,
-                            color: color === 'background' ? 'black' : 'white'
-                        }}
-                    >
-                        {code}
-                    </Text>
-                </View>
-                <View
-                    {...props}
-                    style={[
-                        {
-                            flex: 1
-                            // marginTop: -((StatusBar.currentHeight ?? 30) * 1.5)
-                        },
-                        style
-                    ]}
-                >
-                    {children}
-                </View>
-            </>
-        </TouchableWithoutFeedback>
+                    {code}
+                </Text>
+            </View>
+            <View
+                style={[
+                    {
+                        flex: 1
+                    },
+                    style
+                ]}
+                {...props}
+            >
+                {children}
+            </View>
+        </>
     );
 }
-
-export default TopBarView;

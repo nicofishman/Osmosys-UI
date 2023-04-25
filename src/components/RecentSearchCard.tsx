@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Pressable, Text, View, ViewProps } from 'react-native';
 
 import { Color } from '../../types/Colors';
-import { COLORS } from '../constants';
+import { COLORS } from '../utils/constants';
 
-import Icon from './CardIcon';
+import { Icon } from './CardIcon';
 
 interface IRecentSearchCard extends ViewProps {
     /**
@@ -27,7 +27,7 @@ interface IRecentSearchCard extends ViewProps {
     color?: Color;
 }
 
-const RecentSearchCard = ({
+export const RecentSearchCard = ({
     color = 'primary_blue',
     code,
     name,
@@ -118,5 +118,3 @@ const RecentSearchCard = ({
         </Pressable>
     );
 };
-
-export default RecentSearchCard;

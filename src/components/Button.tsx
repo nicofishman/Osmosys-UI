@@ -7,11 +7,11 @@ import {
     TouchableHighlightProps
 } from 'react-native';
 
-import { COLORS, TEXT_COLORS } from '../constants';
+import { COLORS, TEXT_COLORS } from '../utils/constants';
 import { LightenDarkenColor } from '../utils/color';
 import { Color, TextColor } from '../../types/Colors';
 
-import ButtonLoader from './ButtonLoader';
+import { Loader } from './Loader';
 
 export interface IButton extends TouchableHighlightProps {
     /**
@@ -28,7 +28,7 @@ export interface IButton extends TouchableHighlightProps {
     size?: 'sm' | 'md' | 'lg';
 }
 
-const Button = ({
+export const Button = ({
     children,
     backgroundColor = 'secondary_blue',
     textStyle,
@@ -81,7 +81,7 @@ const Button = ({
             {...rest}
         >
             {isLoading ? (
-                <ButtonLoader
+                <Loader
                     style={{
                         paddingVertical: 18
                     }}
@@ -113,5 +113,3 @@ const Button = ({
         </TouchableHighlight>
     );
 };
-
-export default Button;

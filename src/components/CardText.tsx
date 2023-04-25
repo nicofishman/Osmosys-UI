@@ -2,17 +2,17 @@ import React from 'react';
 import { Text as RNText, TextStyle, type TextProps } from 'react-native';
 
 import { CardTextItem } from '../../types/TextType';
-import { TEXT_COLORS } from '../constants';
+import { TEXT_COLORS } from '../utils/constants';
 import { colorAndRest, getText } from '../utils/cardTextUtils';
 import { TextColor } from '../../types/Colors';
 
-import Icon from './CardIcon';
+import { Icon } from './CardIcon';
 
 interface ICardText extends TextProps {
     text: CardTextItem;
 }
 
-const CardText = ({ text: textObj, style, ...props }: ICardText) => {
+export const CardText = ({ text: textObj, style, ...props }: ICardText) => {
     const text = getText(textObj);
     const { color: textColor, ...rest } = colorAndRest(textObj);
     const restItem = rest as {
@@ -34,7 +34,6 @@ const CardText = ({ text: textObj, style, ...props }: ICardText) => {
             ? textObj.icon
             : undefined;
 
-    // check if icon.type is React.JSXElementConstructor<CardIconProps<L>>
     if (icon && icon.type !== Icon) {
         throw new Error(
             `CardText (text: ${text}): Icon prop should be a CardIcon component`
@@ -78,5 +77,3 @@ const CardText = ({ text: textObj, style, ...props }: ICardText) => {
         </RNText>
     );
 };
-
-export default CardText;

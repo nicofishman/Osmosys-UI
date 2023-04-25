@@ -1,4 +1,4 @@
-import { COLORS, TEXT_COLORS } from '../src/constants';
+import { COLORS, TEXT_COLORS } from '../src/utils/constants';
 
 export type TextColor = keyof typeof TEXT_COLORS;
 

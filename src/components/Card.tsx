@@ -2,10 +2,10 @@ import { StyleSheet, View, type ViewProps } from 'react-native';
 
 import { Color } from '../../types/Colors';
 import { TitleDescriptionPair } from '../../types/TextType';
-import { COLORS } from '../constants';
+import { COLORS } from '../utils/constants';
 import { formatTextItem } from '../utils/cardTextUtils';
 
-import CardText from './CardText';
+import { CardText } from './CardText';
 
 export interface ICard extends ViewProps {
     /**
@@ -18,10 +18,7 @@ export interface ICard extends ViewProps {
     data: TitleDescriptionPair | Array<TitleDescriptionPair>;
 }
 
-/**
- *  General box that displays information. This is just an internal implementation and should not be used in apps.
- */
-export default function Card({
+export function Card({
     data,
     backgroundColor = 'background',
     style,

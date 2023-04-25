@@ -18,7 +18,7 @@ import React from 'react';
 import { IconProps } from '@expo/vector-icons/build/createIconSet';
 
 import { GlyphMap, Library } from '../../types/Icon';
-import { ALL_COLORS } from '../constants';
+import { ALL_COLORS } from '../utils/constants';
 import { Color, TextColor } from '../../types/Colors';
 
 export interface IIcon<L extends Library> extends IconProps<L> {
@@ -27,7 +27,7 @@ export interface IIcon<L extends Library> extends IconProps<L> {
     color?: TextColor | Color;
 }
 
-const Icon = <L extends Library>({
+export const Icon = <L extends Library>({
     library,
     name,
     color = 'white',
@@ -152,5 +152,3 @@ const Icon = <L extends Library>({
             return null;
     }
 };
-
-export default Icon;

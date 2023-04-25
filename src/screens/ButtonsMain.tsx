@@ -1,10 +1,9 @@
-import { Text } from 'react-native';
 import React from 'react';
+import { Text } from 'react-native';
 
-import Button from '../components/Button';
-import ButtonRow from '../components/ButtonRow';
-import { LightenDarkenColor } from '../utils/color';
-import { COLORS, TEXT_COLORS } from '../constants';
+import { Button } from '../components/Button';
+import { ButtonRow } from '../components/ButtonRow';
+import { TEXT_COLORS } from '../utils/constants';
 
 function fakeFetch() {
     console.log('fake');

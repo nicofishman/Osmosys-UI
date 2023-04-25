@@ -1,9 +1,9 @@
 import React from 'react';
 
 import LoadingDots, { ILoadingDots } from '../lib/LoadingDots';
-import { COLORS } from '../constants';
+import { COLORS } from '../utils/constants';
 
-const ButtonLoader = (props: ILoadingDots) => {
+export const Loader = (props: ILoadingDots) => {
     return (
         <LoadingDots
             bounceHeight={5}
@@ -18,5 +18,3 @@ const ButtonLoader = (props: ILoadingDots) => {
         />
     );
 };
-
-export default ButtonLoader;

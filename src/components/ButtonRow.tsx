@@ -3,7 +3,7 @@ import { View, ViewProps } from 'react-native';
 
 import { ButtonElement } from '../../types/Button';
 
-import Button, { IButton } from './Button';
+import { Button, IButton } from './Button';
 
 interface IButtonRow extends ViewProps {
     children:
@@ -13,7 +13,7 @@ interface IButtonRow extends ViewProps {
         | [ButtonElement, ButtonElement, ButtonElement];
 }
 
-const ButtonRow = ({ children, style, ...rest }: IButtonRow) => {
+export const ButtonRow = ({ children, style, ...rest }: IButtonRow) => {
     const buttonCount = Array.isArray(children) ? children.length : 1;
 
     if (Array.isArray(children)) {
@@ -65,5 +65,3 @@ const ButtonRow = ({ children, style, ...rest }: IButtonRow) => {
         </View>
     );
 };
-
-export default ButtonRow;

@@ -9,25 +9,24 @@ import {
 
 import { Color } from '../../types/Colors';
 import { CardIconElement, Library } from '../../types/Icon';
-import { COLORS } from '../constants';
+import { COLORS } from '../utils/constants';
 
-import Icon from './CardIcon';
+import { Icon } from './CardIcon';
 
 type IInput = Omit<TextInputProps, 'onChangeText'> & {
     value: string;
-    name: string;
     /**
      * Function to be called when the input value changes
      * @param name: name of the input
      * @param text: value of the input
      * @returns
      */
-    onChangeText: (text: string, name: string) => void;
+    onChangeText: (text: string) => void;
     color?: Color;
     /**
      *  Icon to be displayed at the start of the input
      */
-    startDecorator?: CardIconElement<Library>;
+    startIcon?: CardIconElement<Library>;
     /**
      * Placeholder Style
      */
@@ -42,7 +41,7 @@ type IInput = Omit<TextInputProps, 'onChangeText'> & {
               /**
                * Icon to be displayed at the end of the input
                */
-              endDecorator?: CardIconElement<Library>;
+              endIcon?: CardIconElement<Library>;
           }
         | {
               type: 'password';
@@ -50,18 +49,17 @@ type IInput = Omit<TextInputProps, 'onChangeText'> & {
               /**
                * Icon to be displayed at the end of the input
                */
-              endDecorator?: never;
+              endIcon?: never;
           }
     );
 
 export const Input = ({
-    name,
     value,
     color = 'primary_blue',
     type = 'text',
     onChangeText,
-    startDecorator,
-    endDecorator,
+    startIcon: startIcon,
+    endIcon,
     placeholder,
     placeholderTextColor,
     placeholderStyle = {},
@@ -121,14 +119,14 @@ export const Input = ({
         }
     }
 
-    if (startDecorator?.props.size && startDecorator.props.size > 40) {
+    if (startIcon?.props.size && startIcon.props.size > 40) {
         throw new Error(
-            'The size of the startDecorator must be less than or equal to 40'
+            'The size of the startIcon must be less than or equal to 40'
         );
     }
-    if (endDecorator?.props.size && endDecorator.props.size > 40) {
+    if (endIcon?.props.size && endIcon.props.size > 40) {
         throw new Error(
-            'The size of the endDecorator must be less than or equal to 40'
+            'The size of the endIcon must be less than or equal to 40'
         );
     }
 
@@ -147,8 +145,8 @@ export const Input = ({
                         position: 'absolute',
                         top: 10,
                         left:
-                            startDecorator && !isFocused && value.length === 0
-                                ? (startDecorator.props.size ?? 10) + 10
+                            startIcon && !isFocused && value.length === 0
+                                ? (startIcon.props.size ?? 10) + 10
                                 : 0,
                         width: '100%',
                         color: placeholderTextColor ?? '#939393',
@@ -167,7 +165,7 @@ export const Input = ({
             >
                 {placeholder}
             </Animated.Text>
-            {startDecorator && (
+            {startIcon && (
                 <View
                     style={{
                         position: 'absolute',
@@ -178,7 +176,7 @@ export const Input = ({
                         alignItems: 'center'
                     }}
                 >
-                    {startDecorator}
+                    {startIcon}
                 </View>
             )}
             <TextInput
@@ -191,22 +189,22 @@ export const Input = ({
                         fontFamily: 'Nunito_600SemiBold',
                         fontSize: 22,
                         height: '100%',
-                        paddingLeft: startDecorator
-                            ? (startDecorator.props.size ?? 10) + 10
+                        paddingLeft: startIcon
+                            ? (startIcon.props.size ?? 10) + 10
                             : 0,
-                        paddingRight: endDecorator
-                            ? (endDecorator.props.size ?? 10) + 10
+                        paddingRight: endIcon
+                            ? (endIcon.props.size ?? 10) + 10
                             : 0
                     },
                     style
                 ]}
                 value={value}
                 onBlur={handleBlur}
-                onChangeText={(text) => onChangeText(text, name)}
+                onChangeText={(text) => onChangeText(text)}
                 onFocus={handleFocus}
                 {...rest}
             />
-            {(endDecorator || type === 'password') && (
+            {(endIcon || type === 'password') && (
                 <View
                     style={{
                         position: 'absolute',
@@ -226,7 +224,7 @@ export const Input = ({
                             onPress={() => setIsPassword(!isPassword)}
                         />
                     ) : (
-                        endDecorator
+                        endIcon
                     )}
                 </View>
             )}

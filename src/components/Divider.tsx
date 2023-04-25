@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { ViewStyle } from 'react-native';
 
 import { Color } from '../../types/Colors';
-import { COLORS } from '../constants';
+import { COLORS } from '../utils/constants';
 
 interface DividerProps {
     /**
@@ -20,7 +20,7 @@ interface DividerProps {
     style?: ViewStyle;
 }
 
-const Divider = ({
+export const Divider = ({
     color = 'primary_blue',
     size = 'sm',
     style
@@ -41,5 +41,3 @@ const Divider = ({
         />
     );
 };
-
-export default Divider;
