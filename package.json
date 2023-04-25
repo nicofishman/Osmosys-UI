@@ -2,20 +2,33 @@
     "name": "osmosys-ui",
     "version": "1.0.0",
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "build": "yarn build:esm",
+        "build:esm": "tsc",
+        "prepare": "npm run build",
+        "prepublishOnly": "npm test && npm run prettier && npm run lint"
     },
     "engines": {
         "npm": "please-use-yarn",
         "yarn": ">= 1.19.1"
     },
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/nicofishman/Osmosys-UI.git"
     },
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
+    "types": "./dist/esm/index.d.ts",
     "dependencies": {
         "@expo-google-fonts/montserrat": "^0.2.3",
         "@expo-google-fonts/nunito": "^0.2.3",
         "@expo/vector-icons": "^13.0.0",
+        "@rollup/plugin-typescript": "^11.1.0",
         "expo": "~48.0.6",
         "expo-font": "~11.1.1",
         "expo-modules-core": "~1.2.6",
