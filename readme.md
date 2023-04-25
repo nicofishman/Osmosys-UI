@@ -13,11 +13,9 @@ yarn add osmosys-ui expo-font expo-splash-screen @expo-google-fonts/montserrat @
 ```tsx
 // App.tsx
 import React from 'react';
-import { Text } from 'react-native';
 import { loadFonts } from 'osmosys-ui';
 
 export default function App() {
-    // highlight-start
     // Add these lines in your main file to properly import the fonts
     const [isLoadingComplete, setLoadingComplete] = useState(false);
 
@@ -30,7 +28,6 @@ export default function App() {
     if (!isLoadingComplete) {
         return null;
     }
-    // highlight-end
 
     return <Main />;
 }

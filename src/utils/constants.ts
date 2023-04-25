@@ -15,7 +15,6 @@ export const TEXT_COLORS = {
     white: '#F8F9FE'
 } as const;
 
-
 export const ALL_COLORS = {
     ...COLORS,
     ...TEXT_COLORS
