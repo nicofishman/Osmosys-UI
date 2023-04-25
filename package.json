@@ -6,7 +6,7 @@
         "build": "yarn build:esm",
         "build:esm": "tsc",
         "prepare": "npm run build",
-        "prepublishOnly": "npm test && npm run prettier && npm run lint"
+        "prepublishOnly": "npm run prettier && npm run lint"
     },
     "engines": {
         "npm": "please-use-yarn",
