@@ -16,6 +16,5 @@ export default function App() {
         return null;
     }
 
-    // return <StorybookComp />;
     return <Main />;
 }
