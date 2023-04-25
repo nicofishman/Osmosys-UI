@@ -1,5 +1,5 @@
 {
-    "name": "storybook",
+    "name": "osmosys-ui",
     "version": "1.0.0",
     "scripts": {
         "test": "jest"
@@ -7,6 +7,10 @@
     "engines": {
         "npm": "please-use-yarn",
         "yarn": ">= 1.19.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nicofishman/Osmosys-UI.git"
     },
     "dependencies": {
         "@expo-google-fonts/montserrat": "^0.2.3",
