@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Pressable, View } from 'react-native';
-import FlipCard, { FlipCardProps } from 'react-native-flip-card';
+import FlipCard from 'react-native-flip-card';
 
 import { CardElement } from '../../types/Card';
+import { FlipCardProps } from '../lib/FlipCard';
 
 import { Card } from './Card';
 
@@ -40,6 +41,7 @@ export const CardSwiper = ({
                 {
                     width: '100%',
                     height: '100%',
+                    position: 'relative',
                     minHeight: 100
                 },
                 style
@@ -63,10 +65,11 @@ export const CardSwiper = ({
             {showDots && (
                 <View
                     style={{
+                        position: 'absolute',
                         flexDirection: 'row',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        marginTop: 10,
+                        bottom: 10,
                         width: '100%'
                     }}
                 >
