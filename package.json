@@ -2,14 +2,7 @@
     "name": "storybook",
     "version": "1.0.0",
     "scripts": {
-        "start": "expo start --dev-client",
-        "android": "expo start --android",
-        "ios": "expo run:ios",
-        "web": "expo start --web",
-        "test": "jest",
-        "test:generate-output": "jest --json --outputFile=.jest-test-results.json",
-        "storybook": "NODE_OPTIONS='--openssl-legacy-provider' start-storybook -p 7007",
-        "build-storybook": "build-storybook"
+        "test": "jest"
     },
     "engines": {
         "npm": "please-use-yarn",
