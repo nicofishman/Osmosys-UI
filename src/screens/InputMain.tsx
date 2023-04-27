@@ -15,8 +15,7 @@ const InputMain = () => {
     return (
         <Input
             color='primary_orange'
-            placeholder='usuario'
-            startIcon={
+            leftIcon={
                 <Icon
                     color='primary_orange'
                     library='AntDesign'
@@ -24,6 +23,7 @@ const InputMain = () => {
                     size={25}
                 />
             }
+            placeholder='usuario'
             type='password'
             value={data.usuario}
             onChangeText={(text) => updateState(text, 'usuario')}

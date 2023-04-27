@@ -6,7 +6,7 @@ import {
     Divider,
     Icon,
     Input,
-    InputCard,
+    BoxInput,
     Modal,
     RecentSearchCard,
     TopBarView
@@ -21,7 +21,7 @@ export {
     Divider,
     Icon,
     Input,
-    InputCard,
+    BoxInput,
     Modal,
     RecentSearchCard,
     TopBarView,

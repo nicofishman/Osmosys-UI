@@ -13,35 +13,35 @@ import { Color, TextColor } from '../../types/Colors';
 import { CardIconElement, Library } from '../../types/Icon';
 import { COLORS, TEXT_COLORS } from '../utils/constants';
 
-interface IInputCard extends TextInputProps {
+interface IBoxInput extends TextInputProps {
     onChangeText: (text: string) => void;
     onSend: () => void;
     value: string;
-    cardStyle?: ViewStyle & {
+    boxStyle?: ViewStyle & {
         backgroundColor?: Color;
     };
-    endIcon?: CardIconElement<Library>;
+    rightIcon?: CardIconElement<Library>;
     placeholderTextColor?: TextColor;
     placeholderStyle?: TextStyle;
 }
 
-export const InputCard = ({
+export const BoxInput = ({
     placeholderTextColor = 'gray',
     value,
     onSend,
-    endIcon,
+    rightIcon,
     style,
     onChangeText,
-    cardStyle,
+    boxStyle,
     placeholder,
     placeholderStyle,
     ...props
-}: IInputCard) => {
+}: IBoxInput) => {
     function handleChangeText(text: string) {
         onChangeText(text);
     }
 
-    const { backgroundColor, ...rest } = cardStyle ?? {};
+    const { backgroundColor, ...rest } = boxStyle ?? {};
 
     return (
         <View
@@ -90,14 +90,14 @@ export const InputCard = ({
                 onChangeText={handleChangeText}
                 {...props}
             />
-            {endIcon && (
+            {rightIcon && (
                 <TouchableOpacity
                     style={{
                         marginLeft: 10
                     }}
                     onPress={onSend}
                 >
-                    {endIcon}
+                    {rightIcon}
                 </TouchableOpacity>
             )}
         </View>

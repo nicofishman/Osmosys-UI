@@ -26,7 +26,7 @@ type IInput = Omit<TextInputProps, 'onChangeText'> & {
     /**
      *  Icon to be displayed at the start of the input
      */
-    startIcon?: CardIconElement<Library>;
+    leftIcon?: CardIconElement<Library>;
     /**
      * Placeholder Style
      */
@@ -41,7 +41,7 @@ type IInput = Omit<TextInputProps, 'onChangeText'> & {
               /**
                * Icon to be displayed at the end of the input
                */
-              endIcon?: CardIconElement<Library>;
+              rightIcon?: CardIconElement<Library>;
           }
         | {
               type: 'password';
@@ -49,7 +49,7 @@ type IInput = Omit<TextInputProps, 'onChangeText'> & {
               /**
                * Icon to be displayed at the end of the input
                */
-              endIcon?: never;
+              rightIcon?: never;
           }
     );
 
@@ -58,8 +58,8 @@ export const Input = ({
     color = 'primary_blue',
     type = 'text',
     onChangeText,
-    startIcon: startIcon,
-    endIcon,
+    leftIcon,
+    rightIcon,
     placeholder,
     placeholderTextColor,
     placeholderStyle = {},
@@ -119,14 +119,14 @@ export const Input = ({
         }
     }
 
-    if (startIcon?.props.size && startIcon.props.size > 40) {
+    if (leftIcon?.props.size && leftIcon.props.size > 40) {
         throw new Error(
-            'The size of the startIcon must be less than or equal to 40'
+            'The size of the leftIcon must be less than or equal to 40'
         );
     }
-    if (endIcon?.props.size && endIcon.props.size > 40) {
+    if (rightIcon?.props.size && rightIcon.props.size > 40) {
         throw new Error(
-            'The size of the endIcon must be less than or equal to 40'
+            'The size of the rightIcon must be less than or equal to 40'
         );
     }
 
@@ -145,8 +145,8 @@ export const Input = ({
                         position: 'absolute',
                         top: 10,
                         left:
-                            startIcon && !isFocused && value.length === 0
-                                ? (startIcon.props.size ?? 10) + 10
+                            leftIcon && !isFocused && value.length === 0
+                                ? (leftIcon.props.size ?? 10) + 10
                                 : 0,
                         width: '100%',
                         color: placeholderTextColor ?? '#939393',
@@ -165,7 +165,7 @@ export const Input = ({
             >
                 {placeholder}
             </Animated.Text>
-            {startIcon && (
+            {leftIcon && (
                 <View
                     style={{
                         position: 'absolute',
@@ -176,7 +176,7 @@ export const Input = ({
                         alignItems: 'center'
                     }}
                 >
-                    {startIcon}
+                    {leftIcon}
                 </View>
             )}
             <TextInput
@@ -189,11 +189,11 @@ export const Input = ({
                         fontFamily: 'Nunito_600SemiBold',
                         fontSize: 22,
                         height: '100%',
-                        paddingLeft: startIcon
-                            ? (startIcon.props.size ?? 10) + 10
+                        paddingLeft: leftIcon
+                            ? (leftIcon.props.size ?? 10) + 10
                             : 0,
-                        paddingRight: endIcon
-                            ? (endIcon.props.size ?? 10) + 10
+                        paddingRight: rightIcon
+                            ? (rightIcon.props.size ?? 10) + 10
                             : 0
                     },
                     style
@@ -204,7 +204,7 @@ export const Input = ({
                 onFocus={handleFocus}
                 {...rest}
             />
-            {(endIcon || type === 'password') && (
+            {(rightIcon || type === 'password') && (
                 <View
                     style={{
                         position: 'absolute',
@@ -224,7 +224,7 @@ export const Input = ({
                             onPress={() => setIsPassword(!isPassword)}
                         />
                     ) : (
-                        endIcon
+                        rightIcon
                     )}
                 </View>
             )}

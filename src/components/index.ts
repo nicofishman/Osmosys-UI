@@ -3,7 +3,7 @@ export * from './Loader';
 export * from './ButtonRow';
 export * from './Card';
 export * from './CardIcon';
-export * from './CardInput';
+export * from './BoxInput';
 export * from './CardSwiper';
 export * from './CardText';
 export * from './Divider';
