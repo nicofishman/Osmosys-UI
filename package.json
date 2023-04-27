@@ -1,6 +1,6 @@
 {
     "name": "osmosys-ui",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "scripts": {
         "test": "jest",
         "build": "yarn build:esm",
