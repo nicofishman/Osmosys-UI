@@ -14,6 +14,7 @@ interface IModal extends RNModalProps {
     onOpenChange: (open: boolean) => void;
     showCloseIcon?: boolean;
     backdropStyle?: ViewStyle;
+    size?: 'sm' | 'md' | 'lg';
 }
 
 export const Modal = ({
@@ -21,7 +22,9 @@ export const Modal = ({
     open,
     onOpenChange,
     backdropStyle,
+    style,
     showCloseIcon = true,
+    size = 'lg',
     ...props
 }: IModal) => {
     return (
@@ -48,16 +51,32 @@ export const Modal = ({
                             flex: 1,
                             width: '100%',
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            paddingHorizontal: 20,
+                            paddingBottom: 50,
+                            paddingTop: 80
                         },
                         backdropStyle
                     ]}
                 >
                     <View
-                        style={{
-                            position: 'relative',
-                            width: '100%'
-                        }}
+                        style={[
+                            {
+                                position: 'relative',
+                                width: '100%',
+                                height:
+                                    size === 'lg'
+                                        ? '100%'
+                                        : size === 'md'
+                                        ? '50%'
+                                        : '20%',
+                                backgroundColor: 'white',
+                                borderRadius: 10,
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            },
+                            style
+                        ]}
                     >
                         {showCloseIcon && (
                             <View

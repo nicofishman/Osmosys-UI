@@ -5,14 +5,14 @@
 ### 1. Install the package
 
 ```bash
-yarn add osmosys-ui expo-font expo-splash-screen @expo-google-fonts/montserrat @expo-google-fonts/nunito
+yarn add osmosys-ui
 ```
 
 ### 2. Use the component
 
 ```tsx
 // App.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { loadFonts } from 'osmosys-ui';
 
 export default function App() {
