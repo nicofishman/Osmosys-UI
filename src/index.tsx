@@ -9,7 +9,8 @@ import {
     BoxInput,
     Modal,
     RecentSearchCard,
-    TopBarView
+    TopBarView,
+    Loader
 } from './components';
 import { loadFonts } from './utils/fonts';
 
@@ -25,5 +26,6 @@ export {
     Modal,
     RecentSearchCard,
     TopBarView,
+    Loader,
     loadFonts
 };

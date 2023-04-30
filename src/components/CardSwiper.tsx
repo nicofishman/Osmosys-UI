@@ -40,7 +40,7 @@ export const CardSwiper = ({
             style={[
                 {
                     width: '100%',
-                    height: '100%',
+                    height: 'auto',
                     position: 'relative',
                     minHeight: 100
                 },

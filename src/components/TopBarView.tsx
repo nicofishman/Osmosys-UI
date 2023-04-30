@@ -1,8 +1,12 @@
 import React from 'react';
 import {
+    Keyboard,
+    KeyboardAvoidingView,
+    Platform,
     StatusBar,
     Text,
     TouchableOpacity,
+    TouchableWithoutFeedback,
     View,
     ViewProps
 } from 'react-native';
@@ -15,7 +19,7 @@ import { Icon } from './CardIcon';
 interface ITopBarView extends ViewProps {
     code: string;
     color?: Color;
-    arrowPress?: () => void;
+    onArrowPress?: () => void;
 }
 
 export function TopBarView({
@@ -23,7 +27,7 @@ export function TopBarView({
     children,
     color = 'primary_blue',
     style,
-    arrowPress,
+    onArrowPress,
     ...props
 }: ITopBarView) {
     const colorsToLight: Color[] = [
@@ -46,10 +50,11 @@ export function TopBarView({
             />
             <View
                 style={{
-                    height: (StatusBar.currentHeight ?? 30) * 2.5,
+                    // height: (StatusBar.currentHeight ?? 30) * 2.5,
                     backgroundColor: COLORS[color],
                     flexDirection: 'row',
                     paddingTop: StatusBar.currentHeight ?? 30,
+                    paddingBottom: 10,
                     alignItems: 'center',
                     paddingRight: 15,
                     paddingLeft: 10,
@@ -57,7 +62,7 @@ export function TopBarView({
                     justifyContent: 'space-between'
                 }}
             >
-                <TouchableOpacity onPress={arrowPress}>
+                <TouchableOpacity onPress={onArrowPress}>
                     <Icon
                         color={color === 'background' ? 'black' : 'white'}
                         library='AntDesign'
@@ -77,17 +82,21 @@ export function TopBarView({
                     {code}
                 </Text>
             </View>
-            <View
-                style={[
-                    {
-                        flex: 1
-                    },
-                    style
-                ]}
-                {...props}
-            >
-                {children}
-            </View>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <KeyboardAvoidingView
+                    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                    enabled={false}
+                    style={[
+                        {
+                            flex: 1
+                        },
+                        style
+                    ]}
+                    {...props}
+                >
+                    {children}
+                </KeyboardAvoidingView>
+            </TouchableWithoutFeedback>
         </>
     );
 }

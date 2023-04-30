@@ -1,6 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { ViewStyle } from 'react-native';
 
 import { Color } from '../../types/Colors';
 import { COLORS } from '../utils/constants';
@@ -14,16 +13,11 @@ interface DividerProps {
      *  The size of the divider. 'sm' for small, 'md' for medium and 'lg' for large
      */
     size?: 'sm' | 'md' | 'lg';
-    /**
-     * Additional styling of the divider
-     */
-    style?: ViewStyle;
 }
 
 export const Divider = ({
     color = 'primary_blue',
-    size = 'sm',
-    style
+    size = 'sm'
 }: DividerProps) => {
     return (
         <View
@@ -35,8 +29,7 @@ export const Divider = ({
                     marginVertical: 10,
                     width:
                         size === 'sm' ? '30%' : size === 'md' ? '47%' : '100%'
-                },
-                style
+                }
             ]}
         />
     );
