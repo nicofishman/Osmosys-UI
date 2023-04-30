@@ -13,7 +13,10 @@ import { COLORS } from '../utils/constants';
 
 import { Icon } from './CardIcon';
 
-type IInput = Omit<TextInputProps, 'onChangeText'> & {
+export type IInput = Omit<
+    TextInputProps,
+    'onChangeText' | 'placeholderTextColor'
+> & {
     value: string;
     /**
      * Function to be called when the input value changes
@@ -61,7 +64,6 @@ export const Input = ({
     leftIcon,
     rightIcon,
     placeholder,
-    placeholderTextColor,
     placeholderStyle = {},
     style = {},
     ...rest
@@ -149,7 +151,7 @@ export const Input = ({
                                 ? (leftIcon.props.size ?? 10) + 10
                                 : 0,
                         width: '100%',
-                        color: placeholderTextColor ?? '#939393',
+                        color: placeholderStyle.color ?? '#939393',
                         textTransform: 'uppercase',
                         height: '100%',
                         fontSize: 22,

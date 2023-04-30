@@ -1,46 +1,41 @@
 import React from 'react';
-import {
-    Text,
-    TextInput,
-    TextInputProps,
-    TextStyle,
-    View,
-    ViewStyle
-} from 'react-native';
+import { Text, TextInput, View, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 
-import { Color, TextColor } from '../../types/Colors';
+import { Color } from '../../types/Colors';
 import { CardIconElement, Library } from '../../types/Icon';
 import { COLORS, TEXT_COLORS } from '../utils/constants';
 
-interface IBoxInput extends TextInputProps {
-    onChangeText: (text: string) => void;
-    onSend: () => void;
+import { IInput } from './Input';
+
+type IBoxInput = Omit<IInput, 'color' | 'type' | 'leftIcon'> & {
+    onButtonPress: () => void;
     value: string;
     boxStyle?: ViewStyle & {
         backgroundColor?: Color;
     };
     rightIcon?: CardIconElement<Library>;
-    placeholderTextColor?: TextColor;
-    placeholderStyle?: TextStyle;
-}
+    type?: 'text' | 'number';
+};
 
 export const BoxInput = ({
-    placeholderTextColor = 'gray',
     value,
-    onSend,
+    onButtonPress,
     rightIcon,
     style,
     onChangeText,
     boxStyle,
     placeholder,
     placeholderStyle,
+    type = 'text',
     ...props
 }: IBoxInput) => {
     function handleChangeText(text: string) {
         onChangeText(text);
     }
 
+    const { color: placeholderColor, ...placeholderStyleRest } =
+        placeholderStyle ?? {};
     const { backgroundColor, ...rest } = boxStyle ?? {};
 
     return (
@@ -69,15 +64,16 @@ export const BoxInput = ({
                             opacity: 0.5,
                             position: 'absolute',
                             fontFamily: 'Nunito_700Bold',
-                            color: TEXT_COLORS[placeholderTextColor ?? 'gray']
+                            color: placeholderColor ?? TEXT_COLORS['gray']
                         },
-                        placeholderStyle
+                        placeholderStyleRest
                     ]}
                 >
                     {placeholder}
                 </Text>
             )}
             <TextInput
+                keyboardType={type === 'number' ? 'numeric' : 'default'}
                 style={[
                     {
                         flex: 1,
@@ -95,7 +91,7 @@ export const BoxInput = ({
                     style={{
                         marginLeft: 10
                     }}
-                    onPress={onSend}
+                    onPress={onButtonPress}
                 >
                     {rightIcon}
                 </TouchableOpacity>

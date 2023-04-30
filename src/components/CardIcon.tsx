@@ -16,6 +16,7 @@ import {
 } from '@expo/vector-icons';
 import React from 'react';
 import { IconProps } from '@expo/vector-icons/build/createIconSet';
+import { TextStyle } from 'react-native';
 
 import { GlyphMap, Library } from '../../types/Icon';
 import { ALL_COLORS } from '../utils/constants';
@@ -25,6 +26,7 @@ export interface IIcon<L extends Library> extends IconProps<L> {
     library: L;
     name: GlyphMap<L>;
     color?: TextColor | Color;
+    style?: Omit<TextStyle, 'color'>;
 }
 
 export const Icon = <L extends Library>({

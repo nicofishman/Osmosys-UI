@@ -17,13 +17,13 @@ import { COLORS } from '../utils/constants';
 import { Icon } from './CardIcon';
 
 interface ITopBarView extends ViewProps {
-    code: string;
+    text: string;
     color?: Color;
     onArrowPress?: () => void;
 }
 
 export function TopBarView({
-    code,
+    text,
     children,
     color = 'primary_blue',
     style,
@@ -79,7 +79,7 @@ export function TopBarView({
                         color: color === 'background' ? 'black' : 'white'
                     }}
                 >
-                    {code}
+                    {text}
                 </Text>
             </View>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
