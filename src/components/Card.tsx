@@ -18,13 +18,27 @@ export interface ICard extends ViewProps {
     data: TitleDescriptionPair | Array<TitleDescriptionPair>;
 }
 
+export interface ICard extends ViewProps {
+    /**
+     * The background color of the component. This should be a key of the `COLORS` object.
+     */
+    backgroundColor?: Color;
+    /**
+     * The data to be displayed in the card. This can be either a single object or an array of objects.
+     */
+    data: TitleDescriptionPair | Array<TitleDescriptionPair>;
+    orientation?: 'horizontal' | 'vertical';
+}
+
 export function Card({
     data,
     backgroundColor = 'background',
+    orientation = 'horizontal',
     style,
     ...props
 }: ICard) {
     const background = COLORS[backgroundColor];
+    const isHorizontal = orientation === 'horizontal';
 
     if (!Array.isArray(data)) {
         data = [data];
@@ -40,7 +54,8 @@ export function Card({
                     minHeight: 34,
                     borderRadius: 5,
                     width: 'auto',
-                    gap: 15
+                    columnGap: 15,
+                    rowGap: 10
                 },
                 styles.container,
                 style,
@@ -61,15 +76,25 @@ export function Card({
                     <View
                         key={index}
                         style={{
-                            flexDirection: 'row',
-                            alignItems: 'flex-start'
+                            flexDirection: isHorizontal ? 'row' : 'column',
+                            minWidth: isHorizontal ? '50%' : '100%',
+                            alignItems: 'flex-start',
+                            maxHeight: 60,
+                            height: 'auto',
+                            rowGap: -10
                         }}
                     >
                         <CardText
                             numberOfLines={1}
                             style={{
+                                width:
+                                    isHorizontal && descriptionText.length > 0
+                                        ? '50%'
+                                        : '100%',
                                 maxWidth:
-                                    descriptionText.length > 0 ? '50%' : '100%'
+                                    isHorizontal && descriptionText.length > 0
+                                        ? '50%'
+                                        : '100%'
                             }}
                             text={{
                                 text: `${titleText}`,
@@ -87,6 +112,11 @@ export function Card({
                         />
                         {descriptionText.length > 0 && (
                             <CardText
+                                numberOfLines={isHorizontal ? 2 : 1}
+                                style={{
+                                    width: isHorizontal ? '50%' : '100%',
+                                    minWidth: isHorizontal ? '50%' : '100%'
+                                }}
                                 text={{
                                     text: `${descriptionText}`,
                                     style: {
@@ -97,7 +127,8 @@ export function Card({
                                                 : formattedDescription.color ??
                                                   'white',
                                         textAlign: 'left',
-                                        flex: 1
+                                        flex: 1,
+                                        minWidth: isHorizontal ? '50%' : '100%'
                                     },
                                     ...formattedDescription
                                 }}
