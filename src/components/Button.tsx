@@ -40,11 +40,14 @@ export const Button = ({
 }: IButton) => {
     const [isLoading, setIsLoading] = useState(false);
 
-    const handlePress = useCallback(async (e: GestureResponderEvent) => {
-        setIsLoading(true);
-        await onPress?.(e);
-        setIsLoading(false);
-    }, []);
+    const handlePress = useCallback(
+        async (e: GestureResponderEvent) => {
+            setIsLoading(true);
+            await onPress?.(e);
+            setIsLoading(false);
+        },
+        [onPress]
+    );
 
     const { color: textColor, ...textStyleRest } = textStyle ?? {};
 
