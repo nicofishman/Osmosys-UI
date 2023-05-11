@@ -5,7 +5,7 @@ import FlipCard from 'react-native-flip-card';
 import { CardElement } from '../../types/Card';
 import { FlipCardProps } from '../lib/FlipCard';
 
-import { Card } from './Card';
+// import { Card } from './Card';
 
 interface ICardSwiper extends FlipCardProps {
     children: [CardElement, CardElement];
@@ -24,6 +24,7 @@ export const CardSwiper = ({
 }: ICardSwiper) => {
     const [isFlipped, setIsFlipped] = useState(false);
 
+    /*
     if (
         ![Card].includes(
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -34,6 +35,7 @@ export const CardSwiper = ({
     ) {
         throw new Error('CardSwiper: Both children should be Card components');
     }
+ */
 
     return (
         <Pressable
