@@ -69,7 +69,7 @@ export const CardSwiper = ({
                         flexDirection: 'row',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        bottom: 10,
+                        bottom: 0,
                         width: '100%'
                     }}
                 >
