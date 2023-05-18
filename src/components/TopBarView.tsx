@@ -1,12 +1,8 @@
 import React from 'react';
 import {
-    Keyboard,
-    KeyboardAvoidingView,
-    Platform,
     StatusBar,
     Text,
     TouchableOpacity,
-    TouchableWithoutFeedback,
     View,
     ViewProps
 } from 'react-native';
@@ -82,7 +78,7 @@ export function TopBarView({
                     {text}
                 </Text>
             </View>
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <KeyboardAvoidingView
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                     enabled={false}
@@ -93,10 +89,20 @@ export function TopBarView({
                         style
                     ]}
                     {...props}
-                >
-                    {children}
-                </KeyboardAvoidingView>
-            </TouchableWithoutFeedback>
+                > */}
+            <View
+                style={[
+                    {
+                        flex: 1
+                    },
+                    style
+                ]}
+                {...props}
+            >
+                {children}
+            </View>
+            {/* </KeyboardAvoidingView>
+            </TouchableWithoutFeedback> */}
         </>
     );
 }

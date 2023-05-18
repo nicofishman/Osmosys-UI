@@ -33,7 +33,7 @@ export interface ICard extends ViewProps {
 export function Card({
     data,
     backgroundColor = 'background',
-    orientation = 'horizontal',
+    orientation = 'vertical',
     style,
     ...props
 }: ICard) {
@@ -79,7 +79,6 @@ export function Card({
                             flexDirection: isHorizontal ? 'row' : 'column',
                             minWidth: isHorizontal ? '50%' : '100%',
                             alignItems: 'flex-start',
-                            maxHeight: 60,
                             height: 'auto',
                             rowGap: -10
                         }}
@@ -112,7 +111,15 @@ export function Card({
                         />
                         {descriptionText.length > 0 && (
                             <CardText
-                                numberOfLines={isHorizontal ? 2 : 1}
+                                numberOfLines={
+                                    isHorizontal
+                                        ? typeof item.description ===
+                                              'object' &&
+                                          item.description.numberOfLines
+                                            ? item.description.numberOfLines
+                                            : 1
+                                        : 1
+                                }
                                 style={{
                                     width: isHorizontal ? '50%' : '100%',
                                     minWidth: isHorizontal ? '50%' : '100%'

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text as RNText, TextStyle, type TextProps } from 'react-native';
 
 import { CardTextItem } from '../../types/TextType';
@@ -12,7 +12,13 @@ interface ICardText extends TextProps {
     text: CardTextItem;
 }
 
-export const CardText = ({ text: textObj, style, ...props }: ICardText) => {
+export const CardText = ({
+    text: textObj,
+    style,
+    numberOfLines,
+    ...props
+}: ICardText) => {
+    const [nLines, setNLines] = useState(numberOfLines);
     const text = getText(textObj);
     const { color: textColor, ...rest } = colorAndRest(textObj);
     const restItem = rest as {
@@ -43,7 +49,7 @@ export const CardText = ({ text: textObj, style, ...props }: ICardText) => {
     return (
         <RNText
             ellipsizeMode='tail'
-            numberOfLines={2}
+            numberOfLines={nLines}
             style={[
                 {
                     fontSize: 16,
@@ -60,6 +66,17 @@ export const CardText = ({ text: textObj, style, ...props }: ICardText) => {
                     color: TEXT_COLORS[textColor ?? 'white']
                 }
             ]}
+            onPress={() =>
+                setNLines(
+                    nLines === undefined
+                        ? undefined
+                        : nLines === 1
+                        ? 2
+                        : nLines === 2
+                        ? 1
+                        : numberOfLines
+                )
+            }
             {...props}
         >
             {iconPosition === 'left' && icon}

@@ -38,7 +38,7 @@ export const ButtonRow = ({ children, style, ...rest }: IButtonRow) => {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     width: '100%',
-                    paddingHorizontal: 10
+                    paddingHorizontal: 0
                 },
                 style,
                 {
