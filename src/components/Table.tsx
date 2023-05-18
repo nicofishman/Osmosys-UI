@@ -90,7 +90,7 @@ export function Table<THead extends string>({
                                     const height = rowsHeight[index];
                                     // const height = 1.5;
                                     const isStripped =
-                                        stripped && index % 2 === 0;
+                                        stripped && index % 2 === 1;
 
                                     return (
                                         <Cell
