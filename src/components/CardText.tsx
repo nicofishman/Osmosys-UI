@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text as RNText, TextStyle, type TextProps } from 'react-native';
 
-import { CardTextItem } from '../../types/TextType';
-import { TEXT_COLORS } from '../utils/constants';
-import { colorAndRest, getText } from '../utils/cardTextUtils';
 import { TextColor } from '../../types/Colors';
+import { CardTextItem } from '../../types/TextType';
+import { colorAndRest, getText } from '../utils/cardTextUtils';
+import { TEXT_COLORS } from '../utils/constants';
 
 import { Icon } from './CardIcon';
 
@@ -18,7 +18,6 @@ export const CardText = ({
     numberOfLines,
     ...props
 }: ICardText) => {
-    const [nLines, setNLines] = useState(numberOfLines);
     const text = getText(textObj);
     const { color: textColor, ...rest } = colorAndRest(textObj);
     const restItem = rest as {
@@ -49,7 +48,7 @@ export const CardText = ({
     return (
         <RNText
             ellipsizeMode='tail'
-            numberOfLines={nLines}
+            numberOfLines={numberOfLines}
             style={[
                 {
                     fontSize: 16,
@@ -66,17 +65,17 @@ export const CardText = ({
                     color: TEXT_COLORS[textColor ?? 'white']
                 }
             ]}
-            onPress={() =>
-                setNLines(
-                    nLines === undefined
-                        ? undefined
-                        : nLines === 1
-                        ? 2
-                        : nLines === 2
-                        ? 1
-                        : numberOfLines
-                )
-            }
+            // onPress={() =>
+            //     setNLines(
+            //         nLines === undefined
+            //             ? undefined
+            //             : nLines === 1
+            //             ? 2
+            //             : nLines === 2
+            //             ? 1
+            //             : numberOfLines
+            //     )
+            // }
             {...props}
         >
             {iconPosition === 'left' && icon}

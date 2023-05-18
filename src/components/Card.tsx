@@ -118,7 +118,7 @@ export function Card({
                                           item.description.numberOfLines
                                             ? item.description.numberOfLines
                                             : 1
-                                        : 1
+                                        : undefined
                                 }
                                 style={{
                                     width: isHorizontal ? '50%' : '100%',
