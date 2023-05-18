@@ -48,6 +48,9 @@ export function Table<THead extends string>({
             showsHorizontalScrollIndicator
             bounces={false}
             contentContainerStyle={style}
+            style={{
+                width: '100%'
+            }}
             {...props}
         >
             <ScrollView
@@ -139,7 +142,8 @@ function Cell({
                     borderBottomWidth: BORDER_WIDTH,
                     borderRightWidth: BORDER_WIDTH,
                     borderColor: COLORS[borderColor],
-                    backgroundColor: stripped ? '#ddd' : '#FFF'
+                    backgroundColor: stripped ? '#ddd' : '#FFF',
+                    justifyContent: 'center'
                 },
                 style
             ]}
