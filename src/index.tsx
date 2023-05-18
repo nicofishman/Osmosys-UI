@@ -10,7 +10,8 @@ import {
     Modal,
     RecentSearchCard,
     TopBarView,
-    Loader
+    Loader,
+    Table
 } from './components';
 import { loadFonts } from './utils/fonts';
 
@@ -25,6 +26,7 @@ export {
     BoxInput,
     Modal,
     RecentSearchCard,
+    Table,
     TopBarView,
     Loader,
     loadFonts
