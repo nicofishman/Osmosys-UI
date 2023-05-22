@@ -122,7 +122,8 @@ export function Card({
                                 }
                                 style={{
                                     width: isHorizontal ? '50%' : '100%',
-                                    minWidth: isHorizontal ? '50%' : '100%'
+                                    minWidth: isHorizontal ? '50%' : '100%',
+                                    maxWidth: isHorizontal ? '50%' : '100%'
                                 }}
                                 text={{
                                     text: `${descriptionText}`,
