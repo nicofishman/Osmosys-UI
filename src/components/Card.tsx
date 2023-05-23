@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { StyleSheet, View, type ViewProps } from 'react-native';
 
 import { Color } from '../../types/Colors';
@@ -88,11 +89,17 @@ export function Card({
                             style={{
                                 width:
                                     isHorizontal && descriptionText.length > 0
-                                        ? '50%'
+                                        ? 'style' in titleFormatted &&
+                                          ((titleFormatted.style as any)
+                                              ?.width ??
+                                              '50%')
                                         : '100%',
                                 maxWidth:
                                     isHorizontal && descriptionText.length > 0
-                                        ? '50%'
+                                        ? 'style' in titleFormatted &&
+                                          ((titleFormatted.style as any)
+                                              ?.maxWidth ??
+                                              '50%')
                                         : '100%'
                             }}
                             text={{
@@ -121,9 +128,24 @@ export function Card({
                                         : undefined
                                 }
                                 style={{
-                                    width: isHorizontal ? '50%' : '100%',
-                                    minWidth: isHorizontal ? '50%' : '100%',
-                                    maxWidth: isHorizontal ? '50%' : '100%'
+                                    width: isHorizontal
+                                        ? 'style' in formattedDescription &&
+                                          ((formattedDescription.style as any)
+                                              ?.width ??
+                                              '50%')
+                                        : '100%',
+                                    minWidth: isHorizontal
+                                        ? 'style' in formattedDescription &&
+                                          ((formattedDescription.style as any)
+                                              ?.minWidth ??
+                                              '50%')
+                                        : '100%',
+                                    maxWidth: isHorizontal
+                                        ? 'style' in formattedDescription &&
+                                          ((formattedDescription.style as any)
+                                              ?.maxWidth ??
+                                              '50%')
+                                        : '100%'
                                 }}
                                 text={{
                                     text: `${descriptionText}`,
@@ -136,7 +158,13 @@ export function Card({
                                                   'white',
                                         textAlign: 'left',
                                         flex: 1,
-                                        minWidth: isHorizontal ? '50%' : '100%'
+                                        minWidth: isHorizontal
+                                            ? 'style' in formattedDescription &&
+                                              ((
+                                                  formattedDescription.style as any
+                                              )?.minWidth ??
+                                                  '50%')
+                                            : '100%'
                                     },
                                     ...formattedDescription
                                 }}

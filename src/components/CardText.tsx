@@ -52,8 +52,8 @@ export const CardText = ({
             style={[
                 {
                     fontSize: 16,
-                    minWidth: '50%',
-                    maxWidth: '50%',
+                    minWidth: restItem.style?.minWidth ?? '50%',
+                    maxWidth: restItem.style?.maxWidth ?? '50%',
                     alignItems: 'center',
                     textAlign: 'left',
                     textAlignVertical: 'center',
