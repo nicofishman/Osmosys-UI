@@ -22,7 +22,6 @@ export type IInput = Omit<
      * Function to be called when the input value changes
      * @param name: name of the input
      * @param text: value of the input
-     * @returns
      */
     onChangeText: (text: string) => void;
     color?: Color;
@@ -73,9 +72,11 @@ export const Input = forwardRef(
         ref: React.ForwardedRef<TextInput>
     ) => {
         const [isPassword, setIsPassword] = useState(type === 'password');
-        const [isFocused, setIsFocused] = useState(false);
-        const [showInput, setShowInput] = useState(false);
-        const [animatedIsFocused] = useState(new Animated.Value(1));
+        const [isFocused, setIsFocused] = useState(value.length > 0);
+        const [showInput, setShowInput] = useState(value.length > 0);
+        const [animatedIsFocused] = useState(
+            new Animated.Value(value !== '' ? 0 : 1)
+        );
 
         const labelInitialSize = style?.fontSize ?? 18;
         const inputFontSize = placeholderStyle.fontSize ?? 12;
