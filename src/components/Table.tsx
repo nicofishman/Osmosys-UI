@@ -56,6 +56,12 @@ export function Table<THead extends string>({
             <ScrollView
                 horizontal
                 showsVerticalScrollIndicator
+                contentContainerStyle={[
+                    {
+                        justifyContent: 'space-around',
+                        flexGrow: 1
+                    }
+                ]}
                 style={[
                     style,
                     {
@@ -71,7 +77,7 @@ export function Table<THead extends string>({
                                 key={item.id}
                                 style={{
                                     flexDirection: 'column',
-                                    maxWidth: 200
+                                    flex: 1
                                 }}
                             >
                                 <Cell

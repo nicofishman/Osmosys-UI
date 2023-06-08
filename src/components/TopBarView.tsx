@@ -49,7 +49,7 @@ export function TopBarView({
                     // height: (StatusBar.currentHeight ?? 30) * 2.5,
                     backgroundColor: COLORS[color],
                     flexDirection: 'row',
-                    paddingTop: StatusBar.currentHeight ?? 30,
+                    paddingTop: StatusBar.currentHeight ?? 70,
                     paddingBottom: 10,
                     alignItems: 'center',
                     paddingRight: 15,
