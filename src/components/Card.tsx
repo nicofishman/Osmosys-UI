@@ -187,6 +187,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingVertical: 14,
         shadowColor: '#000000',
+        shadowOpacity: 0.3,
+        shadowRadius: 8.3,
         elevation: 10
     }
 });
