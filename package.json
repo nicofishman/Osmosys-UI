@@ -1,12 +1,12 @@
 {
     "name": "osmosys-ui",
-    "version": "1.2.2",
+    "version": "1.2.4",
     "scripts": {
         "test": "jest",
         "build": "yarn build:esm",
         "build:esm": "rd /s /q \"dist\" && tsc",
         "build:macos": "rm -rf \"dist\" && tsc",
-        "prepare": "npm run build:macos",
+        "prepare": "npm run build",
         "prepublishOnly": "npm run prettier",
         "prettier": "prettier --write \"src/**/*.{ts,tsx}\""
     },

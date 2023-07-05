@@ -6,6 +6,7 @@ import {
     ViewStyle,
     type ModalProps as RNModalProps
 } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
 import { Icon } from './CardIcon';
 
@@ -28,83 +29,87 @@ export const Modal = ({
     ...props
 }: IModal) => {
     return (
-        <RNModal
-            transparent
-            animationType='fade'
-            visible={open}
-            onRequestClose={() => {
-                onOpenChange(false);
-            }}
-            {...props}
-        >
-            <View
-                style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center'
+        <>
+            <StatusBar backgroundColor='#0007' />
+
+            <RNModal
+                transparent
+                animationType='fade'
+                visible={open}
+                onRequestClose={() => {
+                    onOpenChange(false);
                 }}
+                {...props}
             >
                 <View
-                    style={[
-                        {
-                            backgroundColor: '#0007',
-                            flex: 1,
-                            width: '100%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            paddingHorizontal: 20,
-                            paddingBottom: 50,
-                            paddingTop: 80
-                        },
-                        backdropStyle
-                    ]}
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}
                 >
                     <View
                         style={[
                             {
-                                position: 'relative',
+                                backgroundColor: '#0007',
+                                flex: 1,
                                 width: '100%',
-                                height:
-                                    size === 'lg'
-                                        ? '100%'
-                                        : size === 'md'
-                                        ? '50%'
-                                        : '20%',
-                                backgroundColor: 'white',
-                                borderRadius: 10,
+                                justifyContent: 'center',
                                 alignItems: 'center',
-                                justifyContent: 'center'
+                                paddingHorizontal: 20,
+                                paddingBottom: 50,
+                                paddingTop: 80
                             },
-                            style
+                            backdropStyle
                         ]}
                     >
-                        {showCloseIcon && (
-                            <View
-                                style={{
-                                    position: 'absolute',
-                                    top: -40,
-                                    right: 0,
-                                    padding: 4,
-                                    borderRadius: 5,
-                                    backgroundColor: 'white'
-                                }}
-                            >
-                                <TouchableWithoutFeedback
-                                    onPress={() => onOpenChange(false)}
+                        <View
+                            style={[
+                                {
+                                    position: 'relative',
+                                    width: '100%',
+                                    height:
+                                        size === 'lg'
+                                            ? '100%'
+                                            : size === 'md'
+                                            ? '50%'
+                                            : '20%',
+                                    backgroundColor: 'white',
+                                    borderRadius: 10,
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                },
+                                style
+                            ]}
+                        >
+                            {showCloseIcon && (
+                                <View
+                                    style={{
+                                        position: 'absolute',
+                                        top: -40,
+                                        right: 0,
+                                        padding: 4,
+                                        borderRadius: 5,
+                                        backgroundColor: 'white'
+                                    }}
                                 >
-                                    <Icon
-                                        color={'black'}
-                                        library='Ionicons'
-                                        name={'close'}
-                                        size={25}
-                                    />
-                                </TouchableWithoutFeedback>
-                            </View>
-                        )}
-                        {children}
+                                    <TouchableWithoutFeedback
+                                        onPress={() => onOpenChange(false)}
+                                    >
+                                        <Icon
+                                            color={'black'}
+                                            library='Ionicons'
+                                            name={'close'}
+                                            size={25}
+                                        />
+                                    </TouchableWithoutFeedback>
+                                </View>
+                            )}
+                            {children}
+                        </View>
                     </View>
                 </View>
-            </View>
-        </RNModal>
+            </RNModal>
+        </>
     );
 };
