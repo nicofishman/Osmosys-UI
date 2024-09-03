@@ -1,7 +1,6 @@
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import {
-  useFonts,
   Nunito_200ExtraLight,
   Nunito_300Light,
   Nunito_400Regular,
@@ -17,7 +16,7 @@ import {
   Nunito_600SemiBold_Italic,
   Nunito_700Bold_Italic,
   Nunito_800ExtraBold_Italic,
-  Nunito_900Black_Italic,
+  Nunito_900Black_Italic
 } from '@expo-google-fonts/nunito';
 
 /**
@@ -45,9 +44,8 @@ export const loadFonts = async (
       Nunito_600SemiBold_Italic,
       Nunito_700Bold_Italic,
       Nunito_800ExtraBold_Italic,
-      Nunito_900Black_Italic,
+      Nunito_900Black_Italic
     });
-
   } catch (err) {
     console.log(err);
   } finally {
