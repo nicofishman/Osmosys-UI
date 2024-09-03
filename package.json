@@ -1,61 +1,61 @@
 {
-    "name": "osmosys-ui",
-    "version": "1.2.5",
-    "scripts": {
-        "test": "jest",
-        "build": "yarn build:esm",
-        "build:esm": "rd /s /q \"dist\" && tsc",
-        "build:macos": "rm -rf \"dist\" && tsc",
-        "prepare": "npm run build",
-        "prepublishOnly": "npm run prettier",
-        "prettier": "prettier --write \"src/**/*.{ts,tsx}\""
-    },
-    "eslintConfig": {
-        "ignorePatterns": [
-            "dist",
-            "node_modules"
-        ]
-    },
-    "files": [
-        "dist",
-        "src",
-        "README.md"
-    ],
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/nicofishman/Osmosys-UI.git"
-    },
-    "main": "./dist/src/index.js",
-    "types": "./dist/src/index.d.ts",
-    "dependencies": {
-        "@expo-google-fonts/montserrat": "^0.2.3",
-        "@expo-google-fonts/nunito": "^0.2.3",
-        "@expo/vector-icons": "^13.0.0",
-        "expo": "~48.0.15",
-        "expo-font": "~11.1.1",
-        "expo-modules-core": "~1.2.6",
-        "expo-splash-screen": "~0.18.1",
-        "expo-status-bar": "~1.4.4",
-        "react": "18.2.0",
-        "react-art": "^18.2.0",
-        "react-native": "~0.71.7",
-        "react-native-flip-card": "^3.5.7"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.20.0",
-        "@babel/plugin-proposal-class-properties": "^7.18.6",
-        "@babel/preset-typescript": "^7.21.0",
-        "@types/react": "~18.0.14",
-        "@types/react-native-flip-card": "^3.5.2",
-        "@typescript-eslint/eslint-plugin": "^5.56.0",
-        "@typescript-eslint/parser": "^5.56.0",
-        "babel-loader": "^8.3.0",
-        "eslint": "^8.36.0",
-        "eslint-config-universe": "^11.2.0",
-        "prettier": "^2.8.6",
-        "react-dom": "^18.2.0",
-        "ts-node": "^10.9.1",
-        "typescript": "^4.9.4"
-    }
+  "name": "osmosys-ui",
+  "version": "1.2.7",
+  "scripts": {
+    "test": "jest",
+    "build": "npm run build:esm",
+    "build:esm": "rd /s /q \"dist\" && tsc",
+    "build:macos": "rm -rf \"dist\" && tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run prettier",
+    "prettier": "prettier --write \"src/**/*.{ts,tsx}\""
+  },
+  "eslintConfig": {
+    "ignorePatterns": [
+      "dist",
+      "node_modules"
+    ]
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicofishman/Osmosys-UI.git"
+  },
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "dependencies": {
+    "@expo-google-fonts/montserrat": "^0.2.3",
+    "@expo-google-fonts/nunito": "^0.2.3",
+    "@expo/vector-icons": "^14.0.2",
+    "expo": "^51.0.32",
+    "expo-font": "~12.0.10",
+    "expo-modules-core": "~1.12.24",
+    "expo-splash-screen": "~0.27.5",
+    "expo-status-bar": "~1.12.1",
+    "react": "18.2.0",
+    "react-art": "^18.2.0",
+    "react-native": "0.74.5",
+    "react-native-flip-card": "^3.5.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.0",
+    "@types/react": "~18.0.14",
+    "@types/react-native-flip-card": "^3.5.2",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "babel-loader": "^8.3.0",
+    "eslint": "^8.36.0",
+    "eslint-config-universe": "^11.2.0",
+    "prettier": "^2.8.6",
+    "react-dom": "^18.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
 }
