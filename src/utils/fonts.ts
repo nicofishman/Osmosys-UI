@@ -19,6 +19,14 @@ import {
   Nunito_900Black_Italic
 } from '@expo-google-fonts/nunito';
 
+import {
+  Montserrat_500Medium,
+  Montserrat_400Regular,
+  Montserrat_600SemiBold,
+  Montserrat_700Bold,
+  Montserrat_800ExtraBold
+} from '@expo-google-fonts/montserrat'
+
 /**
  * Loads the fonts for the app
  * @param setFontsLoaded - A function that sets the fontsLoaded's react state to true
@@ -44,7 +52,13 @@ export const loadFonts = async (
       Nunito_600SemiBold_Italic,
       Nunito_700Bold_Italic,
       Nunito_800ExtraBold_Italic,
-      Nunito_900Black_Italic
+      Nunito_900Black_Italic,
+
+      Montserrat_500Medium,
+      Montserrat_400Regular,
+      Montserrat_600SemiBold,
+      Montserrat_700Bold,
+      Montserrat_800ExtraBold
     });
   } catch (err) {
     console.log(err);
